@@ -38,6 +38,7 @@ export function CostWidget({ c, selected, onClick }: Props) {
       {/* Header */}
       <div style={{
         padding: '10px 14px',
+        backgroundColor: c.tealBg,
         borderBottom: `1px solid ${c.border}`,
         display: 'flex',
         alignItems: 'center',

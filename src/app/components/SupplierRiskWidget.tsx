@@ -64,6 +64,7 @@ export function SupplierRiskWidget({ c, selected, onClick }: Props) {
       {/* Header */}
       <div style={{
         padding: '10px 14px',
+        backgroundColor: c.redBg,
         borderBottom: `1px solid ${c.border}`,
         display: 'flex',
         alignItems: 'center',

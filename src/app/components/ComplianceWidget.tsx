@@ -57,6 +57,7 @@ export function ComplianceWidget({ c, selected, onClick }: Props) {
       {/* Header */}
       <div style={{
         padding: '10px 14px',
+        backgroundColor: c.blueBg,
         borderBottom: `1px solid ${c.border}`,
         display: 'flex',
         alignItems: 'center',

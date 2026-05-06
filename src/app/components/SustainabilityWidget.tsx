@@ -1,9 +1,9 @@
 import { ThemeColors } from './theme-config';
 
 const metrics = [
-  { label: 'Recyclability',       value: 72,  display: '72%',  color: 'teal'  as const, positive: true  },
-  { label: 'Recycled content',    value: 41,  display: '41%',  color: 'amber' as const, positive: false },
-  { label: 'Carbon vs baseline',  value: 58,  display: '−58%', color: 'green' as const, positive: true  },
+  { label: 'Recyclability', value: 72, display: '72%', color: 'teal' as const, positive: true },
+  { label: 'Recycled content', value: 41, display: '41%', color: 'amber' as const, positive: false },
+  { label: 'Carbon vs baseline', value: 58, display: '−58%', color: 'green' as const, positive: true },
 ];
 
 interface Props {
@@ -36,6 +36,7 @@ export function SustainabilityWidget({ c, selected, onClick }: Props) {
       {/* Header */}
       <div style={{
         padding: '10px 14px',
+        backgroundColor: c.greenBg,
         borderBottom: `1px solid ${c.border}`,
         display: 'flex',
         alignItems: 'center',
