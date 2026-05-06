@@ -10,7 +10,8 @@ const ALERTS = [
     icon: ShieldAlert,
     title: 'Huhtamaki EU — Force Majeure',
     body: 'Force majeure declared on corrugated packaging. 40% of supply at risk. Alternative sourcing identified within 6 weeks.',
-    meta: 'Supplier: Huhtamaki EU · Category: Corrugated · Affected contracts: 6 · Deadline: Jan 1, 2026',
+    deadline: 'Deadline: Jan 21, 2026',
+    cta: 'Take action',
     time: '22 min ago',
   },
   {
@@ -20,7 +21,8 @@ const ALERTS = [
     icon: AlertTriangle,
     title: 'HDPE Resin +7.2% MoM',
     body: 'HDPE resin index up 7.2% month-on-month. Pricing clauses triggered on 8 contracts. Review flexible laminate exposure.',
-    meta: 'Category: Corrugated · Affected contracts: 8 · Deadline: Jan 1, 2026',
+    deadline: 'Deadline: Feb 15, 2026',
+    cta: 'Review exposure',
     time: '1h 45m ago',
   },
   {
@@ -30,7 +32,8 @@ const ALERTS = [
     icon: FileText,
     title: 'EU PPWR — 30% PCR Requirement',
     body: '14 SKUs non-compliant with EU Packaging & Packaging Waste Regulation PCR content mandate. Remediation plan required.',
-    meta: 'Category: Corrugated · Affected contracts: 14 · Deadline: Jan 1, 2026',
+    deadline: 'Deadline: Jan 1, 2026',
+    cta: 'View action',
     time: '3h ago',
   },
 ];
@@ -93,39 +96,27 @@ export function AlertCards({ c }: Props) {
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
                 {/* Plain text level label — no chip/badge */}
-                <span style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  color: color,
-                  letterSpacing: '0.5px',
-                }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: color, letterSpacing: '0.5px' }}>
                   {alert.level}
                 </span>
                 <span style={{ fontSize: 11, fontWeight: 600, color: c.text }}>
                   {alert.title}
+                </span>
+                <span style={{ fontSize: 10, color: c.textMuted, marginLeft: 'auto', paddingRight: 16, whiteSpace: 'nowrap' }}>
+                  {alert.time}
                 </span>
               </div>
               <p style={{ fontSize: 11, color: c.textSub, margin: 0, lineHeight: 1.45, marginBottom: 4 }}>
                 {alert.body}
               </p>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: 10, color: c.textMuted }}>{alert.meta}</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ fontSize: 10, color: c.textMuted }}>{alert.time}</span>
-                  {/* Hover CTA arrow */}
+                <span style={{ fontSize: 10, color: c.textMuted }}>{alert.deadline}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 3,
-                    fontSize: 10,
-                    fontWeight: 600,
-                    color: color,
-                    opacity: isHovered ? 1 : 0,
-                    transform: isHovered ? 'translateX(0)' : 'translateX(-4px)',
-                    transition: 'opacity 0.18s ease, transform 0.18s ease',
-                    whiteSpace: 'nowrap',
+                    display: 'inline-flex', alignItems: 'center', gap: 3,
+                    fontSize: 10, fontWeight: 600, color: c.teal, whiteSpace: 'nowrap',
                   }}>
-                    View <ArrowRight size={10} />
+                    {alert.cta} <ArrowRight size={10} />
                   </span>
                 </div>
               </div>
