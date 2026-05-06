@@ -29,6 +29,7 @@ export default function App() {
 
   /* trigger skeleton on every screen change (including initial mount) */
   useEffect(() => {
+    console.log('Screen changed to:', screen);
     setIsLoading(true);
     const t = setTimeout(() => setIsLoading(false), LOAD_MS);
     return () => clearTimeout(t);
@@ -55,7 +56,7 @@ export default function App() {
 
   function handleTabChange(id: string) {
     setActiveTab(id);
-    if (id === 'procurement')   { setScreen('procurement');   }
+    if (id === 'procurement') { setScreen('procurement'); }
     else if (id === 'supply-chain') { setScreen('supply-chain'); }
     else if (id === 'command-centre') { setScreen('command-centre'); }
   }
@@ -116,13 +117,13 @@ export default function App() {
           isLoading
             ? <CommandCentreSkeleton c={c} />
             : <>
-                <AlertCards c={c} />
-                <WidgetGrid
-                  c={c}
-                  selectedWidget={selectedWidget}
-                  onSelectWidget={handleWidgetClick}
-                />
-              </>
+              <AlertCards c={c} />
+              <WidgetGrid
+                c={c}
+                selectedWidget={selectedWidget}
+                onSelectWidget={handleWidgetClick}
+              />
+            </>
         )}
 
         {/* ── Cost Drill-Down ─────────────────────────────── */}
@@ -130,10 +131,10 @@ export default function App() {
           isLoading
             ? <CostDrillDownSkeleton c={c} />
             : <CostDrillDownScreen
-                c={c}
-                onBack={handleBackToCommandCentre}
-                onDrillDown={handleCategoryDrillDown}
-              />
+              c={c}
+              onBack={handleBackToCommandCentre}
+              onDrillDown={handleCategoryDrillDown}
+            />
         )}
 
         {/* ── Rigid Plastics ──────────────────────────────── */}
@@ -141,10 +142,10 @@ export default function App() {
           isLoading
             ? <RigidPlasticsSkeleton c={c} />
             : <RigidPlasticsDrillDown
-                c={c}
-                onBackToCommandCentre={handleBackToCommandCentre}
-                onBackToCost={handleBackToCost}
-              />
+              c={c}
+              onBackToCommandCentre={handleBackToCommandCentre}
+              onBackToCost={handleBackToCost}
+            />
         )}
 
       </main>
