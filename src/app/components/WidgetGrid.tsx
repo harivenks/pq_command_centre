@@ -27,7 +27,7 @@ export function WidgetGrid({ c, selectedWidget, onSelectWidget }: Props) {
           <span style={{ fontSize: 10, color: c.textMuted }}>— click a widget to focus</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 10, color: c.textMuted }}>May 5, 2025 · Q2 2025</span>
+          <span style={{ fontSize: 10, color: c.textMuted }}>Dec 5, 2025 · Q2 2025</span>
           <span style={{
             fontSize: 9, color: c.green, backgroundColor: c.greenBg,
             padding: '2px 6px', borderRadius: 2, fontWeight: 600, letterSpacing: '0.4px',
