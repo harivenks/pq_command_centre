@@ -483,7 +483,7 @@ export function ProcurementScreen({ c }: Props) {
   return (
     <div style={{
       display: 'flex',
-      height: 'calc(100vh - 126px)',
+      height: 'calc(100vh - 80px)',
       margin: '-14px -20px -40px',
       overflow: 'hidden',
       position: 'relative',
@@ -713,12 +713,6 @@ export function ProcurementScreen({ c }: Props) {
                     </button>
                   ))}
                 </div>
-              </div>
-            )}
-
-            {suggGroup === 3 && (
-              <div style={{ textAlign: 'center', padding: '16px 0 4px', borderTop: `1px solid ${c.border}`, color: c.textMuted, fontSize: 12 }}>
-                — End of guided analysis —
               </div>
             )}
 
