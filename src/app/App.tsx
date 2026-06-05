@@ -10,12 +10,14 @@ import { ProcurementScreen } from './components/ProcurementScreen';
 import { ProcurementSkeleton } from './components/ProcurementSkeleton';
 import { GlobalSupplierMap } from './components/GlobalSupplierMap';
 import { SpecIntelligenceScreen } from './components/SpecIntelligenceScreen';
+import { SpendIntelligenceScreen } from './components/SpendIntelligence/SpendIntelligenceScreen';
+import { SpendIntelligenceSkeleton } from './components/SpendIntelligence/SpendIntelligenceSkeleton';
 import { SkeletonStyles } from './components/Skeleton';
 import { CommandCentreSkeleton } from './components/CommandCentreSkeleton';
 import { CostDrillDownSkeleton } from './components/CostDrillDownSkeleton';
 import { RigidPlasticsSkeleton } from './components/RigidPlasticsSkeleton';
 
-type Screen = 'command-centre' | 'cost-drill-down' | 'rigid-plastics' | 'procurement' | 'supply-chain' | 'spec-intelligence';
+type Screen = 'command-centre' | 'cost-drill-down' | 'rigid-plastics' | 'procurement' | 'supply-chain' | 'spec-intelligence' | 'spend-intelligence';
 
 const LOAD_MS = 1400;
 
@@ -26,7 +28,10 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>('command-centre');
   const [isLoading, setIsLoading] = useState(true);
 
-  const c = getColors(theme);
+  /* Spend Intelligence is light-only — force light theme while on that screen
+     (toggle stays visible but disabled in NavBar). */
+  const effectiveTheme: Theme = screen === 'spend-intelligence' ? 'light' : theme;
+  const c = getColors(effectiveTheme);
 
   /* trigger skeleton on every screen change (including initial mount) */
   useEffect(() => {
@@ -60,6 +65,7 @@ export default function App() {
     if (id === 'procurement') { setScreen('procurement'); }
     else if (id === 'supply-chain') { setScreen('supply-chain'); }
     else if (id === 'spec-intelligence') { setScreen('spec-intelligence'); }
+    else if (id === 'spend-intelligence') { setScreen('spend-intelligence'); }
     else if (id === 'command-centre') { setScreen('command-centre'); }
   }
 
@@ -90,7 +96,14 @@ export default function App() {
           : <SpecIntelligenceScreen />
       )}
 
-      {screen !== 'spec-intelligence' && (
+      {/* ── Spend Intelligence (ported prototype, full-bleed) ── */}
+      {screen === 'spend-intelligence' && (
+        isLoading
+          ? <SpendIntelligenceSkeleton c={c} />
+          : <SpendIntelligenceScreen />
+      )}
+
+      {screen !== 'spec-intelligence' && screen !== 'spend-intelligence' && (
       <main style={{ padding: '14px 20px 40px' }}>
 
         {/* ── Supply Chain / Map Prototype ─────────────────── */}

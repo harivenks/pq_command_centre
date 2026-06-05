@@ -15,6 +15,7 @@ interface Tab {
 const TABS: Tab[] = [
   { id: 'command-centre',   label: 'Command Centre',   behavior: 'active'   },
   { id: 'spec-intelligence',label: 'Spec Intelligence', behavior: 'active'   },
+  { id: 'spend-intelligence',label: 'Spend Intelligence', behavior: 'active'   },
   { id: 'strategy',         label: 'Strategy',          behavior: 'inactive' },
   { id: 'procurement',      label: 'Procurement',        behavior: 'active'   },
   { id: 'packaging',        label: 'Packaging',          behavior: 'inactive' },
@@ -294,22 +295,31 @@ export function NavBar({ theme, c, activeTab, onTabChange, onThemeToggle }: Prop
 
           <div style={{ width: 1, height: 20, backgroundColor: c.border }} />
 
-          <button
-            onClick={onThemeToggle}
-            style={{
-              padding: '4px 8px', borderRadius: 4,
-              border: `1px solid ${c.border}`,
-              background: c.surface, cursor: 'pointer',
-              display: 'flex', alignItems: 'center', gap: 5,
-              color: c.textSub,
-              transition: 'border-color 0.15s',
-            }}
-          >
-            {theme === 'dark' ? <Sun size={13} color={c.amber} /> : <Moon size={13} color={c.blue} />}
-            <span style={{ fontSize: 11, color: c.textSub }}>
-              {theme === 'dark' ? 'Light' : 'Dark'}
-            </span>
-          </button>
+          {(() => {
+            const themeDisabled = activeTab === 'spend-intelligence';
+            return (
+              <button
+                onClick={themeDisabled ? undefined : onThemeToggle}
+                disabled={themeDisabled}
+                title={themeDisabled ? 'Spend Intelligence is light-mode only' : undefined}
+                style={{
+                  padding: '4px 8px', borderRadius: 4,
+                  border: `1px solid ${c.border}`,
+                  background: c.surface,
+                  cursor: themeDisabled ? 'not-allowed' : 'pointer',
+                  opacity: themeDisabled ? 0.4 : 1,
+                  display: 'flex', alignItems: 'center', gap: 5,
+                  color: c.textSub,
+                  transition: 'border-color 0.15s',
+                }}
+              >
+                {theme === 'dark' ? <Sun size={13} color={c.amber} /> : <Moon size={13} color={c.blue} />}
+                <span style={{ fontSize: 11, color: c.textSub }}>
+                  {theme === 'dark' ? 'Light' : 'Dark'}
+                </span>
+              </button>
+            );
+          })()}
         </div>
       </div>
     </nav>
