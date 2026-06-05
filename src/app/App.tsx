@@ -11,7 +11,7 @@ import { ProcurementSkeleton } from './components/ProcurementSkeleton';
 import { GlobalSupplierMap } from './components/GlobalSupplierMap';
 import { SpecIntelligenceScreen } from './components/SpecIntelligenceScreen';
 import { SpendIntelligenceScreen } from './components/SpendIntelligence/SpendIntelligenceScreen';
-import { SpendIntelligenceSkeleton } from './components/SpendIntelligence/SpendIntelligenceSkeleton';
+import { CenteredLoader } from './components/CenteredLoader';
 import { SkeletonStyles } from './components/Skeleton';
 import { CommandCentreSkeleton } from './components/CommandCentreSkeleton';
 import { CostDrillDownSkeleton } from './components/CostDrillDownSkeleton';
@@ -92,14 +92,14 @@ export default function App() {
       {/* ── Spec Intelligence (embedded, full-bleed) ────────── */}
       {screen === 'spec-intelligence' && (
         isLoading
-          ? <div style={{ padding: '80px 0', textAlign: 'center', color: c.textMuted, fontSize: 12 }}>Loading Spec Intelligence…</div>
+          ? <CenteredLoader c={c} label="Loading Spec Intelligence…" />
           : <SpecIntelligenceScreen />
       )}
 
       {/* ── Spend Intelligence (ported prototype, full-bleed) ── */}
       {screen === 'spend-intelligence' && (
         isLoading
-          ? <SpendIntelligenceSkeleton c={c} />
+          ? <CenteredLoader c={c} label="Loading Spend Intelligence…" />
           : <SpendIntelligenceScreen />
       )}
 
