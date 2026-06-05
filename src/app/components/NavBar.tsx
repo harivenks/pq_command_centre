@@ -14,7 +14,7 @@ interface Tab {
 
 const TABS: Tab[] = [
   { id: 'command-centre',   label: 'Command Centre',   behavior: 'active'   },
-  { id: 'spec-intelligence',label: 'Spec Intelligence', behavior: 'external', href: 'https://black-grass-08bff5500.2.azurestaticapps.net/' },
+  { id: 'spec-intelligence',label: 'Spec Intelligence', behavior: 'active'   },
   { id: 'strategy',         label: 'Strategy',          behavior: 'inactive' },
   { id: 'procurement',      label: 'Procurement',        behavior: 'active'   },
   { id: 'packaging',        label: 'Packaging',          behavior: 'inactive' },

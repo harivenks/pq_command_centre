@@ -9,12 +9,13 @@ import { RigidPlasticsDrillDown } from './components/RigidPlasticsDrillDown';
 import { ProcurementScreen } from './components/ProcurementScreen';
 import { ProcurementSkeleton } from './components/ProcurementSkeleton';
 import { GlobalSupplierMap } from './components/GlobalSupplierMap';
+import { SpecIntelligenceScreen } from './components/SpecIntelligenceScreen';
 import { SkeletonStyles } from './components/Skeleton';
 import { CommandCentreSkeleton } from './components/CommandCentreSkeleton';
 import { CostDrillDownSkeleton } from './components/CostDrillDownSkeleton';
 import { RigidPlasticsSkeleton } from './components/RigidPlasticsSkeleton';
 
-type Screen = 'command-centre' | 'cost-drill-down' | 'rigid-plastics' | 'procurement' | 'supply-chain';
+type Screen = 'command-centre' | 'cost-drill-down' | 'rigid-plastics' | 'procurement' | 'supply-chain' | 'spec-intelligence';
 
 const LOAD_MS = 1400;
 
@@ -58,6 +59,7 @@ export default function App() {
     setActiveTab(id);
     if (id === 'procurement') { setScreen('procurement'); }
     else if (id === 'supply-chain') { setScreen('supply-chain'); }
+    else if (id === 'spec-intelligence') { setScreen('spec-intelligence'); }
     else if (id === 'command-centre') { setScreen('command-centre'); }
   }
 
@@ -81,6 +83,14 @@ export default function App() {
 
       <NewsFeed c={c} />
 
+      {/* ── Spec Intelligence (embedded, full-bleed) ────────── */}
+      {screen === 'spec-intelligence' && (
+        isLoading
+          ? <div style={{ padding: '80px 0', textAlign: 'center', color: c.textMuted, fontSize: 12 }}>Loading Spec Intelligence…</div>
+          : <SpecIntelligenceScreen />
+      )}
+
+      {screen !== 'spec-intelligence' && (
       <main style={{ padding: '14px 20px 40px' }}>
 
         {/* ── Supply Chain / Map Prototype ─────────────────── */}
@@ -149,6 +159,7 @@ export default function App() {
         )}
 
       </main>
+      )}
     </div>
   );
 }
