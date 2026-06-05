@@ -22,7 +22,7 @@ type Screen = 'command-centre' | 'cost-drill-down' | 'rigid-plastics' | 'procure
 const LOAD_MS = 1400;
 
 export default function App() {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const [activeTab, setActiveTab] = useState('command-centre');
   const [selectedWidget, setSelectedWidget] = useState<WidgetId | null>('cost');
   const [screen, setScreen] = useState<Screen>('command-centre');
@@ -74,7 +74,7 @@ export default function App() {
       backgroundColor: c.bg,
       color: c.text,
       minHeight: '100vh',
-      fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+      fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
     }}>
       {/* inject shimmer keyframes once */}
       <SkeletonStyles />
