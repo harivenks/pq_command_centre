@@ -3,6 +3,7 @@ import {
   ChatLoader, ReactionRow, SourceTag, ExpandIcon,
 } from './icons';
 import { ContractsTable, SkusTable, BenchmarkTable, ThresholdTable } from './tables';
+import { downloadRfqDataPack } from './rfqDataPack';
 
 const LOADER_TEXTS = ['Thinking...', 'Unpacking...', 'Analyzing...'];
 const STEPS = 6;
@@ -338,12 +339,12 @@ export function SpendChatDrawer({ open, onClose, onOpenTableModal, width, onWidt
                 <div className="artifact-card-subtitle">11 SKUs · 28 columns · Generated for RFQ</div>
               </div>
             </div>
-            <div className="artifact-card-right">
+            <button type="button" className="artifact-card-right" onClick={downloadRfqDataPack} title="Download SKUs_with_variance_for_RFQ.xlsx">
               <div className="artifact-dl-icon">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D3E53" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               </div>
               <div className="artifact-dl-btn">Download</div>
-            </div>
+            </button>
           </div>
           <div className="chat-source-row">
             <SourceTag>Should_Cost_Model.xlsx</SourceTag>
